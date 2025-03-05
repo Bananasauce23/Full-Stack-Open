@@ -13,7 +13,6 @@ const App = () => {
     const updatedGood = good + 1
     setGood(updatedGood)
     setAll(updatedGood + neutral + bad)
-    console.log(updatedGood + neutral + bad)
     if (updatedGood + neutral + bad > 1){
       sum += 1
       average = sum / (updatedGood + neutral + bad)
@@ -33,8 +32,6 @@ const App = () => {
     else{
       average = 0
     }
-    console.log(all)
-
   }
 
   const handleBad = () => {
@@ -48,8 +45,6 @@ const App = () => {
     else{
       average = -1
     }
-    console.log(good + neutral + updatedBad)
-
   }
 
   return (
@@ -73,7 +68,7 @@ const App = () => {
       <p>Bad: {bad}</p>
       <p>All: {all}</p>
       <p>Average: {average}</p>
-      <p>Positive: {average}</p>
+      <p>Positive: {good / all * 100}%</p>
     </div>
   )
 }
