@@ -15,7 +15,7 @@ const App = () => {
     setAll(updatedGood + neutral + bad)
     if (updatedGood + neutral + bad > 1){
       sum += 1
-      average = sum / (updatedGood + neutral + bad)
+      average = sum / all
     }
     else{
       average = 1
@@ -27,7 +27,7 @@ const App = () => {
     setNeutral(updatedNeutral)
     setAll(good + updatedNeutral + bad)
     if (good + updatedNeutral + bad > 1){
-      average = sum / (good + updatedNeutral + bad)
+      average = sum / all
     }
     else{
       average = 0
@@ -40,7 +40,7 @@ const App = () => {
     setAll(good + neutral + updatedBad)
     if (good + neutral + updatedBad > 1){
       sum -= 1
-      average = sum / (good + neutral + updatedBad)
+      average = sum / all
     }
     else{
       average = -1
