@@ -8,19 +8,23 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
-    setNewName(document.getElementById("name").value)
     setPersons(persons.concat({name:newName}))
+    handleNameChange()
+  }
+
+  const handleNameChange = (event) => {
+    setNewName(event.target.value)
   }
 
 return (
   <div>
     <h2>Phonebook</h2>
-    <form>
+    <form onSubmit={addName}>
       <div>
-        Name: <input id="name"/>
+        Name: <input id="name" onChange={handleNameChange}/>
       </div>
       <div>
-        <button type="submit" value={newName} onClick={addName}>Add</button>
+        <button type="submit">Add</button>
       </div>
     </form>
     <h2>Numbers</h2>
