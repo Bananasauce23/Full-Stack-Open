@@ -17,6 +17,9 @@ const App = () => {
   }
 
   const handleCheck = () => {
+    const names = persons.map(person => person.name)
+    names.some((name) => name == newName) ? 
+    alert(`${newName} is already added to phonebook`) : 
     setPersons(persons.concat({name:newName}))
   }
 
