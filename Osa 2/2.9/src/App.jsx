@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+const Name = ({name}) => {
+  <p>{name.name}</p>
+}
+
 const App = () => {
   const [persons, setPersons] = useState([
     {name: 'Arto Hellas', number: '040-1231244'},
@@ -37,12 +41,22 @@ const App = () => {
     : setPersons(persons.concat({name:newName, number:newNumber}))
   }
 
+  const handleSearchCheck = () => {
+    const searchValue = document.getElementById("search").value.length >= 1
+    ? setShowAll(false)
+    : setShowAll(true)
+  }
+  
+  const handleSearch = () => {
+    console.log(showAll)
+  }
+
 return (
   <div>
     <h2>Phonebook</h2>
     <div>
-      Filter shown with: <input onChange={() => setShowAll(!showAll)}/>
-      show {showAll ? 'search' : 'all'}
+      Filter shown with: <input id="search" onChange={() => handleSearchCheck()}/>
+      show {showAll ? console.log(showAll) : handleSearch()}
     </div>
     <h2>Add new</h2>
     <form onSubmit={addName}>
@@ -57,7 +71,12 @@ return (
       </div>
     </form>
     <h2>Numbers</h2>
-    {persons.map(person => <div key={person.name}>{person.name} {person.number}</div>)}
+    <div>
+      {namesToShow.map(name =>
+        <Name key={name.number} name={name}/>
+      )}
+    </div>
+    {/*{persons.map(person => <div key={person.name}>{person.name} {person.number}</div>)}*/}
   </div>
   )
 }
