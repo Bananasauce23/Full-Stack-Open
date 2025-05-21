@@ -1,9 +1,5 @@
 import { useState } from 'react'
 
-const Name = ({name}) => {
-  <p>{name.name}</p>
-}
-
 const App = () => {
   const [persons, setPersons] = useState([
     {name: 'Arto Hellas', number: '040-1231244'},
@@ -14,10 +10,13 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [showAll, setShowAll] = useState(true)
+  const [search, setSearch] = useState('')
 
   const namesToShow = showAll
   ? persons
-  : persons.filter(person => person.search === true)
+  : persons.filter((person) =>
+    person.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   const addName = (event) => {
     event.preventDefault()
@@ -41,22 +40,21 @@ const App = () => {
     : setPersons(persons.concat({name:newName, number:newNumber}))
   }
 
-  const handleSearchCheck = () => {
-    const searchValue = document.getElementById("search").value.length >= 1
-    ? setShowAll(false)
-    : setShowAll(true)
-  }
-  
-  const handleSearch = () => {
-    console.log(showAll)
+  const handleSearchCheck = (event) => {
+    if (event.target.value.length >= 1) {
+      setShowAll(false)
+      setSearch(event.target.value)
+    }
+    else {
+      setShowAll(true)
+    }
   }
 
 return (
   <div>
     <h2>Phonebook</h2>
     <div>
-      Filter shown with: <input id="search" onChange={() => handleSearchCheck()}/>
-      show {showAll ? console.log(showAll) : handleSearch()}
+      Filter shown with: <input onChange={handleSearchCheck}/>
     </div>
     <h2>Add new</h2>
     <form onSubmit={addName}>
@@ -71,12 +69,7 @@ return (
       </div>
     </form>
     <h2>Numbers</h2>
-    <div>
-      {namesToShow.map(name =>
-        <Name key={name.number} name={name}/>
-      )}
-    </div>
-    {/*{persons.map(person => <div key={person.name}>{person.name} {person.number}</div>)}*/}
+      {namesToShow.map(person => <div key={person.name}>{person.name} {person.number}</div>)}
   </div>
   )
 }
