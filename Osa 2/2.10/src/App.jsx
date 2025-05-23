@@ -24,8 +24,8 @@ const App = () => {
   const addName = (event) => {
     event.preventDefault()
     handleCheck()
-    handleNameChange()
-    handleNumberChange()
+    handleNameChange(event)
+    handleNumberChange(event)
   }
 
   const handleNameChange = (event) => {
@@ -56,13 +56,16 @@ const App = () => {
 return (
   <div>
     <h2>Phonebook</h2>
-    <Filter/>
+    <Filter handleSearchCheck={handleSearchCheck}/>
 
     <h2>Add new</h2>
-    <PersonForm/>
+    <PersonForm 
+    addName={addName}
+    handleNameChange={handleNameChange}
+    handleNumberChange={handleNumberChange}/>
 
     <h2>Numbers</h2>
-    <Persons/>
+    <Persons namesToShow={namesToShow}/>
   </div>
   )
 }
