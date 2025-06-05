@@ -22,7 +22,7 @@ const App = () => {
   const [showAll, setShowAll] = useState(true)
   const [search, setSearch] = useState('')
   const [message, setMessage] = useState(null)
-  const [messageType, setMessageType] = useState('success')
+  const [messageType, setMessageType] = useState(null)
 
   useEffect(() => {
     personService
