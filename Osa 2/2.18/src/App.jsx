@@ -34,8 +34,8 @@ function App() {
           <h2>Languages</h2>
           <ul>
             {filtered[0].languages &&
-              Object.values(filtered[0].languages).map(lang => (
-                <li key={lang}>{lang}</li>
+              Object.values(filtered[0].languages).map(language => (
+                <li key={language}>{language}</li>
               ))}
           </ul>
           <img src={filtered[0].flags.png} width="200"/>
