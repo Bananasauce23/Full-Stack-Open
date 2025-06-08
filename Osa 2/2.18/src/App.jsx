@@ -1,9 +1,5 @@
 import { useState, useEffect} from 'react'
 
-const handleSearch = () => {
-
-}
-
 function App() {
   const [countries, setCountries] = useState([])
   const [search, setSearch] = useState('')
