@@ -30,7 +30,7 @@ function App() {
     const apiKey = import.meta.env.VITE_WEATHER_API_KEY
     const capital = Array.isArray(country.capital) ? country.capital[0] : country.capital
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${apiKey}`)
-      .then(res => res.json())
+      .then(response => response.json())
       .then(data => setWeather(data))
       .catch(() => setWeather(null))
   }, [shown, filtered])
