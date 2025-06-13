@@ -1,0 +1,7 @@
+POST https://three-10-zeay.onrender.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Matti Meikäläinen",
+    "number": "123456789"
+}
