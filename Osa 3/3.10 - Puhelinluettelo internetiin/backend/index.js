@@ -32,7 +32,7 @@ app.get(`/api/persons/:id`, (request, response, next) => {
                 response.json(person)
             }
             else {
-                response.status(404).end()
+                response.status(404).json({error: "Person not found"})
             }
         })
         .catch(error => next(error))
@@ -77,7 +77,7 @@ app.put("/api/persons/:id", (request, response, next) => {
             response.json(updatedPerson)
         }
         else {
-            response.status(404).end()
+            response.status(404).json({error: "Person not found"})
         }
     })
     .catch(error => next(error))
