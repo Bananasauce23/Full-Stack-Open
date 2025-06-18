@@ -68,25 +68,26 @@ const App = () => {
           })
       }
     }
-    else{
+    else {
     personService
       .create(personObject)
       .then(response => {
         setPersons(persons.concat(response.data))
-      })
-      .then(success => {
-        setMessage(
-          `Added '${newName}'`
-        )
-        setMessageType(
-          'success'
-        )
+        setMessage(`Added ${newName}`)
+        setMessageType('success')
         setTimeout(() => {
           setMessage(null)
         }, 5000)
-      })
-    }
+    })
+    .catch(error => {
+      setMessage(error.response?.data?.error || "Unknown error")
+      setMessageType('error')
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    })
   }
+}
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
