@@ -55,10 +55,17 @@ const App = () => {
           .then(response => {
             setPersons(persons.map(p => p.id !== existingPerson.id ? p : response.data))
           })
+
           .catch(error => {
-            setMessage(
-              `Information of ${newName} has already been removed from server.`
-            )
+            if (error.response && error.response.data && error.response.data.error) {
+              setMessage(error.response.data.error)
+            }
+            else if (error.response && error.response.status === 404) {
+              setMessage(`Information of ${newName} has already been removed from server`)
+            }
+            else {
+              setMessage("Unknown error")
+            }
             setMessageType(
               'error'
             )
@@ -80,7 +87,7 @@ const App = () => {
         }, 5000)
     })
     .catch(error => {
-      setMessage(error.response?.data?.error || "Unknown error")
+      setMessage(error.response?.data?.error || `Person validation failed: name: Path (${newName}) is shorter than the minimum allowed length (3).`)
       setMessageType('error')
       setTimeout(() => {
         setMessage(null)
