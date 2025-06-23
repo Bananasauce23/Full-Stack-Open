@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Testia",
+    "author": "Kirjoittaja",
+    "url": "http://esim.fi",
+    "likes": 3
+}
