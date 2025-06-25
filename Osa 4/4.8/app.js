@@ -6,7 +6,6 @@ const blogsRouter = require('./controllers/blogs')
 const app = express()
 
 if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
-    console.log(process.env.TEST_MONGODB_URI)
     mongoose.connect(process.env.TEST_MONGODB_URI || process.env.MONGODB_URI)
 }
 
