@@ -7,7 +7,6 @@ const blogSchema = mongoose.Schema({
     likes: { type: Number, default: 0},
 })
 
-// Add toJSON transformation to change _id to id and remove __v
 blogSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
