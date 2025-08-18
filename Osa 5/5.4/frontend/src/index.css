@@ -1,0 +1,6 @@
+.notification {
+    border: 3px solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: lightgray;
+}
