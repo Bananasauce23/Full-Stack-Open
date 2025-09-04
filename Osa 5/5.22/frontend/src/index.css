@@ -1,0 +1,11 @@
+.notification {
+    border: 3px solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: lightgray;
+}
+
+.blog {
+    border: 2px solid;
+    margin: 10px;
+}
